@@ -1,0 +1,58 @@
+#N canvas 0 417 590 478 12;
+#X msg 249 70 \$1 10;
+#X obj 249 99 line~;
+#X obj 31 291 outlet~;
+#X obj 32 14 inlet~;
+#X obj 89 14 inlet~;
+#X obj 89 73 abs~;
+#X obj 90 127 +~, f 9;
+#X obj 89 44 *~;
+#X msg 147 68 \$1 10;
+#X obj 147 97 line~;
+#X obj 311 117 hsl 128 15 0 127 0 0 \$0-drive \$0-driverestore drive
+2 8 0 10 #fcfcfc #7c7c7c #000000 0 1;
+#X obj 311 137 hsl 128 15 0 127 0 0 drivecv drivecvrestore drive-cv
+2 8 0 10 #ffffff #000000 #ff8300 0 1;
+#X obj 394 299 f;
+#X obj 394 324 pack f f;
+#X obj 302 325 savestate;
+#X obj 302 350 unpack f f;
+#X obj 365 375 s \$0-drivecvrestore;
+#X obj 302 405 s \$0-driverestore;
+#X obj 147 15 r \$0-drivecv;
+#X obj 249 15 r \$0-drive;
+#X obj 412 274 r \$0-drive;
+#X obj 447 299 r \$0-drivecv;
+#X obj 31 255 /~;
+#X obj 147 42 / 127;
+#X obj 249 41 / 127;
+#X obj 48 221 expr~ ln(1 + exp(50*$v1*$v1)) + (1/(8*$v1 + 1)) - ln(2)
+;
+#X obj 30 189 expr~ ln(1 + exp($v1*50*$v2*$v2)) + ($v1/(8*$v2 + 1))
+- ln(2);
+#X connect 0 0 1 0;
+#X connect 1 0 6 1;
+#X connect 3 0 26 0;
+#X connect 4 0 7 0;
+#X connect 5 0 6 0;
+#X connect 6 0 25 0;
+#X connect 6 0 26 1;
+#X connect 7 0 5 0;
+#X connect 8 0 9 0;
+#X connect 9 0 7 1;
+#X connect 12 0 13 0;
+#X connect 13 0 14 0;
+#X connect 14 0 15 0;
+#X connect 14 1 12 0;
+#X connect 15 0 17 0;
+#X connect 15 1 16 0;
+#X connect 18 0 23 0;
+#X connect 19 0 24 0;
+#X connect 20 0 12 1;
+#X connect 21 0 13 1;
+#X connect 22 0 2 0;
+#X connect 23 0 8 0;
+#X connect 24 0 0 0;
+#X connect 25 0 22 1;
+#X connect 26 0 22 0;
+#X coords 0 -1 1 1 148 60 1 300 100;

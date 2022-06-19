@@ -1,0 +1,26 @@
+#N canvas 1296 378 313 517 12;
+#X obj 99 429 hsl 128 15 0 127 0 0 \$0-offset \$0-offsetrestore offset
+-42 8 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 39 232 savestate;
+#X obj 117 226 f;
+#X obj 39 145 samphold~, f 14;
+#X obj 40 22 inlet~ in;
+#X obj 135 114 phasor~;
+#X obj 39 172 outlet~;
+#X text 141 400 sampling freq;
+#X obj 147 84 mtof~;
+#X obj 135 24 inlet~ fs;
+#X obj 147 58 r \$0-offset;
+#X obj 135 199 r \$0-offset;
+#X obj 39 257 s \$0-offsetrestore;
+#X connect 1 0 12 0;
+#X connect 1 1 2 0;
+#X connect 2 0 1 0;
+#X connect 3 0 6 0;
+#X connect 4 0 3 0;
+#X connect 5 0 3 1;
+#X connect 8 0 5 0;
+#X connect 9 0 5 0;
+#X connect 10 0 8 0;
+#X connect 11 0 2 1;
+#X coords 0 -1 1 1 186 50 1 50 400;
