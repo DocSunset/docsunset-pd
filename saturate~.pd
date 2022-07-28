@@ -16,8 +16,8 @@
 #X obj 147 93 line~;
 #X obj 311 117 hsl 128 15 0 127 0 0 \$0-drive \$0-driverestore drive
 2 8 0 10 #fcfcfc #7c7c7c #000000 0 1;
-#X obj 311 137 hsl 128 15 0 127 0 0 drivecv drivecvrestore drive-cv
-2 8 0 10 #ffffff #000000 #ff8300 0 1;
+#X obj 311 137 hsl 128 15 0 127 0 0 \$0-drivecv \$0-drivecvrestore
+drive-cv 2 8 0 10 #ffffff #000000 #ff8300 0 1;
 #X obj 145 198 expr~ 1/tanh($v1);
 #X obj 383 215 f;
 #X obj 383 240 pack f f;

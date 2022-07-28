@@ -1,4 +1,4 @@
-#N canvas 59 103 1063 851 12;
+#N canvas 0 19 1680 1001 12;
 #X obj 637 2 inlet~ time;
 #X obj 804 640 savestate;
 #X obj 881 611 f;
@@ -18,10 +18,10 @@
 2 8 0 10 #fcfcfc #ff8300 #000000 0 1;
 #X obj 106 542 hsl 128 15 0 127 0 0 \$0-targetcv \$0-targetcvrestore
 target-cv 2 8 0 10 #fcfcfc #ff8300 #000000 0 1;
-#X obj 122 468 r \$0-gate;
-#X obj 122 501 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X obj 142 468 r \$0-gate;
+#X obj 142 501 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X obj 159 599 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#X obj 225 597 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
 #X obj 282 619 r \$0-end-gate;
 #X obj 145 39 inlet~ gate;

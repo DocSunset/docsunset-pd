@@ -1,4 +1,4 @@
-#N canvas 0 19 909 586 12;
+#N canvas 0 19 1680 1001 12;
 #X obj 103 17 inlet~ f0;
 #X obj 196 18 inlet~ ratio;
 #X obj 480 18 inlet~ amp;
