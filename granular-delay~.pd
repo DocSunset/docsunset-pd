@@ -1,0 +1,94 @@
+#N canvas 855 388 579 453 12;
+#X obj 20 60 hsl 128 15 0 127 0 0 \$0-delay-min \$0-delay-min-set delay_min
+137 8 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 20 80 hsl 128 15 0 127 0 0 \$0-delay-max \$0-delay-max-set delay_max
+137 8 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 20 124 hsl 128 15 0 127 0 0 \$0-duration-max \$0-duration-max-set
+duration_max 137 8 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 20 102 hsl 128 15 0 127 0 0 \$0-duration-min \$0-duration-min-set
+duration_min 137 8 0 10 #fcfcfc #000000 #000000 0 1;
+#X floatatom 17 189 5 -64 24 1 pitch_min \$0-pitch-min-set \$0-pitch-min
+10;
+#X floatatom 118 189 5 -64 24 1 pitch_max \$0-pitch-min-set \$0-pitch-min
+10;
+#X obj 18 347 inlet~;
+#X obj 20 18 hsl 128 15 0 127 0 0 \$0-iot-min \$0-iot-min-set iot_min
+137 8 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 20 38 hsl 128 15 0 127 0 0 \$0-iot-max \$0-iot-max-set iot_max
+137 8 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 20 167 hsl 128 15 0 127 0 0 \$0-amplitude-max \$0-amplitude-max-set
+amplitude_max 137 8 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 20 145 hsl 128 15 0 127 0 0 \$0-amplitude-min \$0-amplitude-min-set
+amplitude_min 137 8 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 20 212 hsl 128 15 0 127 0 0 \$0-feedback \$0-feedback-set feedback
+137 8 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 17 234 tgl 15 0 empty empty freeze 17 7 0 10 #fcfcfc #000000
+#000000 0 1;
+#X floatatom 118 232 5 -64 24 1 max-grains \$0-max-grains-set \$0-max-grains
+10;
+#N canvas 0 19 450 300 delay-writer 0;
+#X obj 37 37 inlet~;
+#X obj 37 62 delwrite~ \$0-granular-delay 120000;
+#X obj 41 131 outlet~;
+#X connect 0 0 1 0;
+#X restore 18 377 pd delay-writer;
+#N canvas 0 19 450 300 generator 0;
+#X obj 37 236 outlet;
+#X restore 148 346 pd generator;
+#N canvas 0 19 1010 742 allocator 0;
+#X obj 24 15 inlet;
+#X obj 24 309 list store, f 29;
+#X obj 24 139 until;
+#X obj 24 167 f, f 6;
+#X obj 84 167 + 1;
+#X msg 63 104 0;
+#X obj 24 195 t f f, f 23;
+#X obj 24 335 list prepend, f 23;
+#X obj 24 255 sel 0;
+#X obj 24 361 outlet;
+#N canvas 0 23 450 278 (subpatch) 0;
+#X array \$0-busygrains 50 float 3;
+#A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0;
+#X coords 0 1 50 -1 200 140 1 0 0;
+#X restore 434 187 graph;
+#X obj 432 57 loadbang;
+#X obj 24 44 t b b a, f 29;
+#X obj 432 87 pack symbol \$0;
+#X obj 24 226 array get \$0-busygrains 0 1;
+#X obj 24 74 array size \$0-busygrains;
+#X msg 432 116 \; \$2-busygrains const 0;
+#X obj 24 283 t b b;
+#X obj 334 225 t a;
+#X connect 0 0 12 0;
+#X connect 1 0 7 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 3 0 6 0;
+#X connect 4 0 3 1;
+#X connect 5 0 3 1;
+#X connect 6 0 14 0;
+#X connect 6 1 7 1;
+#X connect 7 0 9 0;
+#X connect 8 0 17 0;
+#X connect 11 0 13 0;
+#X connect 12 0 15 0;
+#X connect 12 1 5 0;
+#X connect 12 2 1 1;
+#X connect 13 0 16 0;
+#X connect 14 0 8 0;
+#X connect 15 0 2 0;
+#X connect 17 0 1 0;
+#X connect 17 1 18 0;
+#X connect 18 0 2 1;
+#X restore 148 374 pd allocator;
+#N canvas 0 19 450 300 delay-granulator 0;
+#X obj 39 27 inlet~;
+#X obj 174 73 inlet;
+#X obj 40 243 outlet~;
+#X obj 38 167 todo: clone delay-grain nclones \$0;
+#X restore 18 406 pd delay-granulator;
+#X connect 6 0 14 0;
+#X connect 14 0 17 0;
+#X connect 15 0 16 0;
+#X connect 16 0 17 1;
