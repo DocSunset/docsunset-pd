@@ -1,4 +1,4 @@
-#N canvas 101 368 414 602 12;
+#N canvas 184 425 414 602 12;
 #X obj 18 162 hsl 128 15 0 127 0 0 \$0-delay-min \$0-delay-min-set
 delay_min 137 8 0 10 #fcfcfc #000000 #000000 0 1;
 #X obj 18 177 hsl 128 15 0 127 0 0 \$0-delay-max \$0-delay-max-set
@@ -28,8 +28,8 @@ amplitude_min 137 8 0 10 #fcfcfc #000000 #000000 0 1;
 #000000 #000000;
 #X text 33 306 open file;
 #N canvas 0 50 450 250 (subpatch) 0;
-#X array \$0-sample 1.323e+06 float 2;
-#X coords 0 1 1.323e+06 -1 133 64 1 0 0;
+#X array \$0-sample 1.13587e+06 float 2;
+#X coords 0 1 1.13587e+06 -1 133 64 1 0 0;
 #X restore 15 98 graph;
 #N canvas 0 470 450 300 load-sample 0;
 #X obj 15 16 r \$0-open;
@@ -72,12 +72,15 @@ amplitude_min 137 8 0 10 #fcfcfc #000000 #000000 0 1;
 #X connect 5 0 7 1;
 #X connect 7 0 2 1;
 #X restore 226 417 pd time;
-#X obj 289 466 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#X obj 289 467 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
 #000000 #000000;
+#X listbox 21 336 20 0 0 0 - - - 0;
+#X obj 21 359 s \$0-quantize;
 #X connect 12 0 19 0;
 #X connect 18 0 11 0;
 #X connect 18 0 11 1;
 #X connect 19 0 13 0;
 #X connect 19 0 20 0;
 #X connect 19 0 18 0;
+#X connect 21 0 22 0;
 #X coords 0 -1 1 1 218 310 1 15 15;
