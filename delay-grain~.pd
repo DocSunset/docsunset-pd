@@ -1,7 +1,7 @@
-#N canvas 467 700 389 204 12;
+#N canvas 467 700 446 191 12;
 #X obj 26 21 inlet;
-#X obj 149 60 delread4~ \$2-granular-delay;
-#N canvas 643 209 490 418 pitch-shift 0;
+#X obj 218 55 delread4~ \$2-granular-delay;
+#N canvas 1330 250 490 418 pitch-shift 1;
 #X obj 23 282 pack f f f, f 24;
 #X obj 23 332 line~;
 #X obj 23 46 t f f, f 6;
@@ -73,44 +73,28 @@
 #X restore 351 86 pd quantize;
 #X obj 153 155 expr $f1 - ($f2*$f3 - $f2);
 #X obj 105 47 t f f, f 20;
-#X floatatom 51 91 5 0 0 0 - - - 0;
-#X floatatom 132 91 5 0 0 0 - - - 0;
-#X floatatom 265 85 5 0 0 0 - - - 0;
-#X obj 120 340 print;
-#X obj 146 125 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
-#000000 #000000;
 #X msg 23 307 \$1 \, \$3 \$2;
-#X obj 23 209 expr if($f2 < 0 \, $f1 - $f2 + 1 \, $f1) \; if($f2 <
-0 \, 1 \, $f2);
 #X obj 332 41 r \$0-pitch;
 #X obj 105 22 r \$0-dur;
 #X obj 23 22 r \$0-delay;
-#X obj 181 335 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
-#000000 #000000;
-#X connect 0 0 13 0;
+#X obj 23 209 expr if($f2 < 0 \, $f1 - $f2 \, $f1) \; if($f2 < 0 \,
+0 \, $f2);
+#X connect 0 0 8 0;
 #X connect 1 0 4 0;
-#X connect 2 0 14 0;
+#X connect 2 0 12 0;
 #X connect 2 1 6 0;
 #X connect 3 0 6 2;
-#X connect 6 0 14 1;
+#X connect 6 0 12 1;
 #X connect 7 0 0 1;
 #X connect 7 1 6 1;
-#X connect 8 0 2 0;
-#X connect 9 0 7 0;
-#X connect 9 0 12 0;
-#X connect 10 0 3 0;
-#X connect 10 0 12 0;
+#X connect 8 0 1 0;
+#X connect 9 0 3 0;
+#X connect 10 0 7 0;
+#X connect 11 0 2 0;
 #X connect 12 0 0 0;
-#X connect 13 0 1 0;
-#X connect 13 0 11 0;
-#X connect 13 0 18 0;
-#X connect 14 0 0 0;
-#X connect 14 1 0 2;
-#X connect 15 0 3 0;
-#X connect 16 0 7 0;
-#X connect 17 0 2 0;
-#X restore 148 30 pd pitch-shift;
-#X obj 148 131 outlet~;
+#X connect 12 1 0 2;
+#X restore 217 25 pd pitch-shift;
+#X obj 220 126 outlet~;
 #X obj 26 129 switch~;
 #X obj 26 93 grain-skeleton~ \$1 \$2 \$0;
 #X connect 0 0 5 0;

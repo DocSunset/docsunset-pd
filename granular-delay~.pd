@@ -1,34 +1,33 @@
-#N canvas 165 182 414 602 12;
-#X obj 20 60 hsl 128 15 0 127 0 0 \$0-delay-min \$0-delay-min-set delay_min
+#N canvas 286 222 414 602 12;
+#X obj 18 86 hsl 128 15 0 127 0 0 \$0-delay-min \$0-delay-min-set delay_min
 137 8 0 10 #fcfcfc #000000 #000000 0 1;
-#X obj 20 80 hsl 128 15 0 127 0 0 \$0-delay-max \$0-delay-max-set delay_max
-137 8 0 10 #fcfcfc #000000 #000000 0 1;
-#X obj 20 124 hsl 128 15 0 127 0 0 \$0-duration-max \$0-duration-max-set
+#X obj 18 106 hsl 128 15 0 127 0 0 \$0-delay-max \$0-delay-max-set
+delay_max 137 8 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 18 150 hsl 128 15 0 127 0 0 \$0-duration-max \$0-duration-max-set
 duration_max 137 8 0 10 #fcfcfc #000000 #000000 0 1;
-#X obj 20 102 hsl 128 15 0 127 0 0 \$0-duration-min \$0-duration-min-set
+#X obj 18 128 hsl 128 15 0 127 0 0 \$0-duration-min \$0-duration-min-set
 duration_min 137 8 0 10 #fcfcfc #000000 #000000 0 1;
-#X floatatom 17 189 5 -64 24 1 pitch_min \$0-pitch-min-set \$0-pitch-min
+#X floatatom 15 215 5 -64 24 1 pitch_min \$0-pitch-min-set \$0-pitch-min
 10;
-#X floatatom 118 189 5 -64 24 1 pitch_max \$0-pitch-max-set \$0-pitch-max
+#X floatatom 116 215 5 -64 24 1 pitch_max \$0-pitch-max-set \$0-pitch-max
 10;
 #X obj 18 347 inlet~;
-#X obj 20 18 hsl 128 15 0 127 0 0 \$0-iot-min \$0-iot-min-set iot_min
+#X obj 18 44 hsl 128 15 0 127 0 0 \$0-iot-min \$0-iot-min-set iot_min
 137 8 0 10 #fcfcfc #000000 #000000 0 1;
-#X obj 20 38 hsl 128 15 0 127 0 0 \$0-iot-max \$0-iot-max-set iot_max
+#X obj 18 64 hsl 128 15 0 127 0 0 \$0-iot-max \$0-iot-max-set iot_max
 137 8 0 10 #fcfcfc #000000 #000000 0 1;
-#X obj 20 167 hsl 128 15 0 127 0 0 \$0-amplitude-max \$0-amplitude-max-set
+#X obj 18 193 hsl 128 15 0 127 0 0 \$0-amplitude-max \$0-amplitude-max-set
 amplitude_max 137 8 0 10 #fcfcfc #000000 #000000 0 1;
-#X obj 20 145 hsl 128 15 0 127 0 0 \$0-amplitude-min \$0-amplitude-min-set
+#X obj 18 171 hsl 128 15 0 127 0 0 \$0-amplitude-min \$0-amplitude-min-set
 amplitude_min 137 8 0 10 #fcfcfc #000000 #000000 0 1;
-#X obj 20 212 hsl 128 15 0 127 0 0 \$0-feedback \$0-feedback-set feedback
+#X obj 18 238 hsl 128 15 0 127 0 0 \$0-feedback \$0-feedback-set feedback
 137 8 0 10 #fcfcfc #000000 #000000 0 1;
-#X obj 17 234 tgl 15 0 \$0-freeze empty freeze 17 7 0 10 #fcfcfc #000000
+#X obj 15 256 tgl 15 0 \$0-freeze empty freeze 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X floatatom 118 232 5 -64 24 1 max-grains \$0-max-grains-set \$0-max-grains
+#X floatatom 116 254 5 -64 24 1 max-grains \$0-max-grains-set \$0-max-grains
 10;
-#N canvas 0 19 450 300 delay-writer 0;
+#N canvas 245 107 601 450 delay-writer 0;
 #X obj 37 37 inlet~;
-#X obj 38 182 outlet~;
 #X obj 179 9 r \$0-freeze;
 #X obj 178 63 == 0;
 #X obj 179 34 t f f;
@@ -38,29 +37,44 @@ amplitude_min 137 8 0 10 #fcfcfc #000000 #000000 0 1;
 #000000 0 1;
 #X obj 137 63 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000
 #000000 0 1;
-#X obj 37 117 delwrite~ \$0-granular-delay 120000;
-#X obj 235 61 delread~ \$0-granular-delay 30000;
-#X connect 0 0 5 0;
-#X connect 2 0 4 0;
-#X connect 3 0 5 1;
-#X connect 3 0 8 0;
-#X connect 4 0 3 0;
-#X connect 4 1 6 1;
-#X connect 4 1 7 0;
-#X connect 5 0 9 0;
-#X connect 6 0 9 0;
-#X connect 10 0 6 0;
+#X obj 155 185;
+#X text 84 225 max duration = 7500 ms (7.5 secs) max delay = 30000
+ms (30 secs) max pitch shift up = 24 st (* 4.0) max audio read = max
+duration * max pitch shift = 80000 (80 secs), f 69;
+#X obj 45 152 delwrite~ \$0-granular-delay 120000;
+#X obj 237 61 delread~ \$0-granular-delay 30000;
+#X connect 0 0 4 0;
+#X connect 0 0 10 0;
+#X connect 1 0 3 0;
+#X connect 2 0 4 1;
+#X connect 2 0 7 0;
+#X connect 3 0 2 0;
+#X connect 3 1 5 1;
+#X connect 3 1 6 0;
+#X connect 11 0 5 0;
 #X restore 18 377 pd delay-writer;
-#X obj 146 474 dac~;
-#X obj 88 336 *~ 0.1;
-#X obj 79 289 osc~ 440;
 #X obj 147 434 clone delay-grain~ 64 \$0;
-#X obj 147 403 granular-generator \$0;
-#X listbox 163 376 38 0 0 0 - - - 0;
+#X obj 147 336 granular-generator \$0;
+#X listbox 163 309 38 0 0 0 - - - 0;
+#N canvas 511 40 450 300 time 0;
+#X obj 37 27 inlet;
+#X obj 37 52 unpack f f f f f;
+#X obj 37 235 pack f f f f f, f 16;
+#X obj 37 260 outlet;
+#X obj 64 144 * 30000;
+#X connect 0 0 1 0;
+#X connect 1 0 2 0;
+#X connect 1 1 4 0;
+#X connect 1 2 2 2;
+#X connect 1 3 2 3;
+#X connect 1 4 2 4;
+#X connect 2 0 3 0;
+#X connect 4 0 2 1;
+#X restore 147 384 pd time;
+#X obj 146 474 outlet~;
 #X connect 6 0 14 0;
-#X connect 16 0 14 0;
-#X connect 17 0 16 0;
+#X connect 15 0 19 0;
+#X connect 16 0 17 0;
+#X connect 16 0 18 0;
 #X connect 18 0 15 0;
-#X connect 18 0 15 1;
-#X connect 19 0 20 0;
-#X connect 19 0 18 0;
+#X coords 0 -1 1 1 218 260 1 15 15;
