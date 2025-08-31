@@ -1,4 +1,4 @@
-#N canvas 0 19 1680 1001 12;
+#N canvas 0 18 1680 1001 12;
 #X obj 103 17 inlet~ f0;
 #X obj 196 18 inlet~ ratio;
 #X obj 480 18 inlet~ amp;
@@ -16,16 +16,11 @@
 #X obj 315 162 rzero~ -1;
 #X obj 315 187 *~ 0.5;
 #X obj 105 355 outlet~;
-#X obj 99 449 hsl 128 15 0 127 0 0 \$0-fb \$0-fbrestore fb -18 8 0
-10 #fcfcfc #000000 #000000 0 1;
-#X obj 99 472 hsl 128 15 0 127 0 0 \$0-fbcv \$0-fbcvrestore fb-cv -36
-8 0 10 #fcfcfc #ff8300 #ff8300 0 1;
-#X obj 99 495 hsl 128 15 0 127 0 0 \$0-amp \$0-amprestore amp -24 8
-0 10 #fcfcfc #000000 #000000 0 1;
-#X obj 99 518 hsl 128 15 0 127 0 0 \$0-ampcv \$0-ampcvrestore amp-cv
--42 8 0 10 #fcfcfc #ff8300 #ff8300 0 1;
-#X floatatom 197 425 5 0 0 0 base-ratio \$0-ratiorestore \$0-ratio
-10;
+#X obj 99 449 hsl 128 15 0 127 0 0 \$0-fb \$0-fbrestore fb -18 8 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 99 472 hsl 128 15 0 127 0 0 \$0-fbcv \$0-fbcvrestore fb-cv -36 8 0 10 #fcfcfc #ff8300 #ff8300 0 1;
+#X obj 99 495 hsl 128 15 0 127 0 0 \$0-amp \$0-amprestore amp -24 8 0 10 #fcfcfc #000000 #000000 0 1;
+#X obj 99 518 hsl 128 15 0 127 0 0 \$0-ampcv \$0-ampcvrestore amp-cv -42 8 0 10 #fcfcfc #ff8300 #ff8300 0 1;
+#X floatatom 197 425 5 0 0 0 base-ratio \$0-ratiorestore \$0-ratio 10;
 #X obj 213 46 r \$0-ratio;
 #X obj 371 67 r \$0-fb;
 #X obj 371 17 r \$0-fbcv;
@@ -61,7 +56,9 @@
 #X obj 610 486 s \$0-ratiorestore;
 #X obj 586 512 s \$0-freqrestore;
 #X obj 671 209 f;
+#X obj 135 76 outlet~;
 #X connect 0 0 37 0;
+#X connect 0 0 57 0;
 #X connect 1 0 27 0;
 #X connect 2 0 30 0;
 #X connect 3 0 28 0;
